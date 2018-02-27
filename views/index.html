@@ -1,0 +1,43 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Customers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./vendor/bootstrap/dist/css/bootstrap.css" />
+    <script src="server.js"></script>
+</head>
+
+<body>
+    <div style="display: flex; flex-wrap: wrap">
+        <div class='container'>
+            <h1> CRUD 3</h1>
+            <form method='POST' action='/' style="background-color:bisque; padding: 15px 10px;">
+                <input name='name' placeholder='create customer' style='width:50%' />
+                <button class='btn btn-success'>Create Customer</button>
+            </form>
+            <ul>
+                <div class="customer" style="margin:15 0px;width:33.33%;padding: 10px;">
+                    {% for customer in customers %}
+                    <li>
+                        <form method='POST' action='/{{customer.id}}?_method=PUT' > {{ customer.name }}
+                        <input name='name' placeholder='update name' />
+                        <button class="btn btn-success">Update</button>
+                        </form>
+
+                        <form method='POST' action='/{{customer.id}}?_method=DELETE'>
+                        <button class='btn btn-danger'>Delete</button>
+                            
+                        </form>
+
+                    </li>
+                    {% endfor %}
+            </ul>
+            </div>
+        </div>
+
+</body>
+
+</html>
